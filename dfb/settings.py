@@ -25,7 +25,7 @@ SECRET_KEY = 'f!ze&=pk9rcq5%@hx4y$#!xc2-h)585)+ezmj!c-8(b8ogd5#)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dfb-staging.ukfit.webfactional.com']
 
 
 # Application definition
