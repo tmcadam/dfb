@@ -20,7 +20,7 @@ source .env/bin/activate
 set -u
 
 # Install dependencies
-pip-compile -o requirements.txt requirements.in
+pip-compile -o requirements.txt requirements.in > /dev/null
 pip-sync requirements.txt
 
 # Check for and apply new migrations
