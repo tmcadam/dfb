@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/1.6/howto/deployment/wsgi/
 import os
 import sys
 import site
-from django.core.wsgi import get_wsgi_application
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -29,5 +28,6 @@ workspace = os.path.dirname(project)
 sys.path.append(BASE_DIR)
 
 sys.path = [BASE_DIR, REPO_DIR, os.path.join(BASE_DIR, 'dfb')] + sys.path
+from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
 
