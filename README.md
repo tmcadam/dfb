@@ -1,4 +1,4 @@
-# Dictionary of Falklands Biographies
+# Dictionary of Falklands Biographies ![Build Status](https://travis-ci.org/tmcadam/dfb.svg?branch=master "Build status")
 The web version of the book, The Dictionary of Falkland Biographies.
 
 ##Development Environment##
