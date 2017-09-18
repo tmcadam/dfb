@@ -1,0 +1,5 @@
+django==1.11.5
+psycopg2
+nose
+django-nose
+rednose

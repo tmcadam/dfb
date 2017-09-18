@@ -19,12 +19,13 @@ set +u
 source .env/bin/activate
 set -u
 
+# Install dependencies
+pip-compile -o requirements.txt requirements.in
+pip-sync requirements.txt
+
 # Check for and apply new migrations
 python manage.py makemigrations
 python manage.py migrate --database default --no-input
-
-# Install dependencies
-pip-sync requirements.txt
 
 # Run tests
 python manage.py test --rednose
