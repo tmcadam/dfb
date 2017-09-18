@@ -2,3 +2,5 @@ django==1.11.5
 pytz
 psycopg2
 nose
+django-nose
+rednose

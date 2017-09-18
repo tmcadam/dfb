@@ -1,7 +1,7 @@
 #!/bin/bash
 
+# Go to the project directory
 PROJECT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
 cd ${PROJECT_DIR}
 
 # Setup virtualenv, if it doesn't already exist
@@ -19,8 +19,12 @@ set +u
 source .env/bin/activate
 set -u
 
+# Check for and apply new migrations
+python manage.py makemigrations
+python manage.py migrate --database default --no-input
+
 # Install dependencies
 pip-sync requirements.txt
 
 # Run tests
-nosetests ./tests
+python manage.py test --rednose
