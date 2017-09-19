@@ -1,14 +1,17 @@
 language: python
 python:
 - '3.5'
+addons:
+    apt:
+        packages:
+            - sshpass
 install:
 - pip install -r requirements.txt
 script:
 - python manage.py test
 after_success:
-# sshpass -p $DEPLOY_PASS
-- echo $DEPLOY_PASS
-- sshpass -p $DEPLOY_PASS ssh -o stricthostkeychecking=no $DEPLOY_USER@$DEPLOY_HOST ls $DEPLOY_PATH
+- export SSHPASS=$DEPLOY_PASS
+- sshpass -e ssh -o stricthostkeychecking=no $DEPLOY_USER@$DEPLOY_HOST ls $DEPLOY_PATH
 env:
   global:
   - secure: DSHKtrIICAsFLM8JUyWO6hXCBoJ/13tHMI6pohk7D+/GNkXAsPAmRb+mzaeXw3UE8EtPJ3XKSZOBU0Y5gODJWg+hl9I41Ri7HNRmc/u2JmP5j6snOrKsVp+/PQj6/4DfnFibgyoB9/cdFTH084EERPbCBxUJDmFJI6nPnEU5OqKR2WdcIsImZMIbNhNAI3mh6mJOWniQXlrKPtnrTIweWqHJtaBC81LxzXiPepBIKzfkv/uPGbx4gVxEjXH0CvFc6AdnE6pRdTPChNxx1jp1ED4GtGXGgvH1ErfCZB6PB2UMG6iVSIzp6rGz62Tz2FfTawTpist+wWnlAE+1T+Oum+SaLkH+N/cPdNd3+R3XhaZUj0dhYLElnNAZq7bwsqitAERcHsrpFldQd5ieuyp3ue5l7vLdP/+TclIET+uHm+zDfsHBcdewi2IhGBV5wYSgv7iWVUg7Vrlr5Nl7IRsUphduxALM0wSwScJgRyVWRCla9P/8dEWvHBEhGL3apXUlL/ljplVlgonVSgfVAh6ac61qAOrt3DYohP1zbud4V51xnkXUuu9AVb3OQpacNRQZn44DBwETZifZdNhn0Fp47f7dqYZNP65vtaaILzNbs0DXRiO7mI8Guclx+glFB+l+35LJv5j6v9gHfw6ARMsRBnsV43My46vSxwKS78k6zV8=
