@@ -12,7 +12,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 file_name = os.path.join(BASE_DIR, "ENVIRONMENT.cfg")
 with open(file_name) as f:
-    ENVIRONMENT = f.readline()
+    ENVIRONMENT = f.readlines()[0]
 
 base_settings = [
     'components/base.py',           # standard django settings
@@ -20,8 +20,8 @@ base_settings = [
     # 'components/rq.py',           # redis and redis-queue
     # 'components/emails.py',       # smtp
     # 'components/*.py'             # You can even use glob
-    'environments/{}.py'.format(ENVIRONMENT),             # Select the right env
-    # optional('environments/local.py')     # Optionally override some settings
+    'environments/{}.py'.format(ENVIRONMENT),   # Select the right env
+    # optional('environments/local.py')         # Optionally override some settings
 ]
 
 # Include settings:
