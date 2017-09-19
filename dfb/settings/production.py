@@ -1,4 +1,3 @@
-from .base import *
+from dfb.settings.base import *
 
 DEBUG = False
-print(INSTALLED_APPS)

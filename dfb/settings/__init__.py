@@ -7,10 +7,10 @@ with open(file_name) as f:
 print(ENVIRONMENT)
 
 if ENVIRONMENT == 'staging':
-    from .staging import *
+    from dfb.settings.staging import *
 elif ENVIRONMENT == 'production':
-    from .production import *
+    from dfb.settings.production import *
 elif ENVIRONMENT == 'ci':
-    from .ci import *
+    from dfb.settings.ci import *
 elif ENVIRONMENT == 'development':
-    from .development import *
+    from dfb.settings.development import *

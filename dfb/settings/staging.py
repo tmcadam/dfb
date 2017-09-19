@@ -1,1 +1,1 @@
-from .base import *
+from dfb.settings.base import *
