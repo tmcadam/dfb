@@ -8,11 +8,14 @@ addons:
 install:
 - pip install -r requirements.txt
 - pip install -r requirements-dev.txt
+before_script:
+- echo ci > ENVIRONMENT.cfg
 script:
 - python manage.py test
 after_success:
 - export SSHPASS=$DEPLOY_PASS
 - sshpass -e ssh -o stricthostkeychecking=no ${DEPLOY_USER}@${DEPLOY_HOST} bash ${DEPLOY_HOME}/git_deploy.sh "${DEPLOY_PATH}" ${DEPLOY_REPO} ${DEPLOY_BRANCH}
+- sshpass -e ssh -o stricthostkeychecking=no ${DEPLOY_USER}@${DEPLOY_HOST} echo staging > ${DEPLOY_HOME}/ENVIRONMENT.cfg
 - sshpass -e ssh -o stricthostkeychecking=no $DEPLOY_USER@$DEPLOY_HOST bash $DEPLOY_PATH/deploy.sh
 env:
   global:
