@@ -10,8 +10,6 @@ if [ -d ".env" ]; then
 else
     echo "**> creating virtualenv"
     virtualenv -p python3 .env
-    source .env/bin/activate
-    pip install -U pip-tools
 fi
 
 # Enter virtualenv
@@ -20,6 +18,7 @@ source .env/bin/activate
 set -u
 
 # Install dependencies
+pip install -U pip-tools
 pip-sync requirements.txt
 
 # Check for and apply new migrations
