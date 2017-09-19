@@ -19,8 +19,10 @@ set -u
 
 # Install dependencies
 pip install -U pip-tools
+pip install -U setuptools
 pip-compile -o requirements.txt requirements.in > /dev/null
-pip-sync requirements.txt
+pip-compile -o requirements-dev.txt requirements-dev.in
+pip-sync requirements.txt requirements-dev.txt
 
 # Check for and apply new migrations
 python manage.py makemigrations
