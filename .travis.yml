@@ -15,8 +15,8 @@ script:
 after_success:
 - export SSHPASS=$DEPLOY_PASS
 - sshpass -e ssh -o stricthostkeychecking=no ${DEPLOY_USER}@${DEPLOY_HOST} bash "${DEPLOY_HOME}/git_deploy.sh" "${DEPLOY_PATH}" ${DEPLOY_REPO} ${DEPLOY_BRANCH}
-- sshpass -e ssh -o stricthostkeychecking=no ${DEPLOY_USER}@${DEPLOY_HOST} echo "staging" > "${DEPLOY_PATH}/ENVIRONMENT.cfg"
-- sshpass -e ssh -o stricthostkeychecking=no $DEPLOY_USER@$DEPLOY_HOST bash "$DEPLOY_PATH/deploy.sh"
+- sshpass -e ssh -o stricthostkeychecking=no ${DEPLOY_USER}@${DEPLOY_HOST} "echo 'staging' > '${DEPLOY_PATH}/ENVIRONMENT.cfg'"
+- sshpass -e ssh -o stricthostkeychecking=no $DEPLOY_USER@$DEPLOY_HOST bash "${DEPLOY_PATH}/deploy.sh"
 env:
   global:
   - DEPLOY_BRANCH=origin/master
