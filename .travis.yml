@@ -7,6 +7,7 @@ script:
 - python manage.py test
 after_success:
 # sshpass -p $DEPLOY_PASS
+- echo $DEPLOY_PASS
 - sshpass -p $DEPLOY_PASS ssh -o stricthostkeychecking=no $DEPLOY_USER@$DEPLOY_HOST ls $DEPLOY_PATH
 env:
   global:
