@@ -7,4 +7,4 @@ class RootTestCase(TestCase):
         c = Client()
         response = c.get('/')
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Hello World")
+        self.assertContains(response, 'Hello World - Basic pipeline working')
