@@ -9,7 +9,7 @@ if [ -d ".env" ]; then
     echo "**> virtualenv exists"
 else
     echo "**> creating virtualenv"
-    virtualenv -p python3 .env
+    pyvenv-3.5 -p python3.5 .env
 fi
 
 # Enter virtualenv
@@ -18,11 +18,11 @@ source .env/bin/activate
 set -u
 
 # Install dependencies
-pip install -U pip-tools
+pip3.5 install -U pip-tools
 pip-sync requirements.txt
 
 # Check for and apply new migrations
-python manage.py migrate --database default --no-input
+python3.5 manage.py migrate --database default --no-input
 
 # Restart Apache
-../apche2/bin/restart
+../apache2/bin/restart
