@@ -9,9 +9,7 @@ if [ -d ".env" ]; then
     echo "**> virtualenv exists"
 else
     echo "**> creating virtualenv"
-    virtualenv -p python3 .env
-    source .env/bin/activate
-    pip install -U pip-tools
+    pyvenv-3.5 .env
 fi
 
 # Enter virtualenv
@@ -20,6 +18,7 @@ source .env/bin/activate
 set -u
 
 # Install dependencies
+pip install -U pip-tools
 pip-compile -o requirements.txt requirements.in > /dev/null
 pip-sync requirements.txt
 
@@ -28,4 +27,4 @@ python manage.py makemigrations
 python manage.py migrate --database default --no-input
 
 # Run tests
-python manage.py test --rednose
+python manage.py test #--rednose

@@ -4,7 +4,7 @@ The web version of the book, The Dictionary of Falkland Biographies.
 ##Development Environment##
 * Make sure Python 3 tools are up to date
 ```
-sudo apt-get install python3-pip python3-setuptools
+sudo apt-get install python3-pip python3-setuptools python3-venv
 ```
 * Make a folder and clone the repo
 ```
