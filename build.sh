@@ -21,7 +21,7 @@ set -u
 pip install -U pip-tools
 pip install -U setuptools
 pip-compile -o requirements.txt requirements.in > /dev/null
-pip-compile -o requirements-dev.txt requirements-dev.in
+pip-compile -o requirements-dev.txt requirements-dev.in > /dev/null
 pip-sync requirements.txt requirements-dev.txt
 
 # Check for and apply new migrations

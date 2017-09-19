@@ -1,6 +1,6 @@
 import os
-from .base import BASE_DIR
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 file_name = os.path.join(BASE_DIR, "ENVIRONMENT.cfg")
 with open(file_name) as f:
     ENVIRONMENT = f.readline()
