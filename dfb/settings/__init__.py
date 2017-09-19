@@ -12,7 +12,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 file_name = os.path.join(BASE_DIR, "ENVIRONMENT.cfg")
 with open(file_name) as f:
-    ENVIRONMENT = f.readlines()[0].replace('\r', '').replace('\n', '')
+    ENVIRONMENT = f.readline().replace('\r', '').replace('\n', '')
 
 base_settings = [
     'components/base.py',           # standard django settings
