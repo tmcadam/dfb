@@ -9,10 +9,20 @@ To change settings file:
 from split_settings.tools import optional, include
 import os
 
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-file_name = os.path.join(BASE_DIR, "ENVIRONMENT.cfg")
-with open(file_name) as f:
-    ENVIRONMENT = f.readline().replace('\r', '').replace('\n', '')
+
+
+def get_environment_file_path():
+    return os.path.join(BASE_DIR, "ENVIRONMENT.cfg")
+
+
+def get_environment_variable(file_name):
+    with open(file_name) as f:
+        environment = f.readline().replace('\r', '').replace('\n', '')
+    return environment
+
+ENVIRONMENT = get_environment_variable(get_environment_file_path())
 
 base_settings = [
     'components/base.py',           # standard django settings

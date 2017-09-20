@@ -28,7 +28,7 @@ pip-sync requirements.txt requirements-dev.txt
 python manage.py makemigrations
 python manage.py migrate --database default --no-input
 
-# Build httpd.conf from template
+# Build httpd.conf from template (just to check it really)
 python httpd.conf.py
 
 # Run tests
