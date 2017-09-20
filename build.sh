@@ -28,5 +28,8 @@ pip-sync requirements.txt requirements-dev.txt
 python manage.py makemigrations
 python manage.py migrate --database default --no-input
 
+# Build httpd.conf from template
+python httpd.conf.py
+
 # Run tests
-python manage.py test #--rednose
+python manage.py test --rednose

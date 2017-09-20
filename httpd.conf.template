@@ -1,4 +1,4 @@
-ServerRoot "/home/tmcadam/Tools/apache2"
+ServerRoot "{{ apache_path }}"
 
 LoadModule authz_core_module modules/mod_authz_core.so
 LoadModule dir_module        modules/mod_dir.so
@@ -12,10 +12,10 @@ LoadModule unixd_module      modules/mod_unixd.so
 LoadModule alias_module      modules/mod_alias.so
 
 LogFormat "%{X-Forwarded-For}i %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
-CustomLog /home/tmcadam/logs/user/access_Tools.log combined
-ErrorLog /home/tmcadam/logs/user/error_Tools.log
+CustomLog {{ home_path }}/logs/user/access_{{ app_name }}.log combined
+ErrorLog {{ home_path }}/logs/user/error_{{ app_name }}.log
 
-Listen 21457
+Listen {{ port }}
 KeepAlive Off
 SetEnvIf X-Forwarded-SSL on HTTPS=1
 ServerLimit 1
@@ -25,8 +25,8 @@ MinSpareThreads 1
 MaxSpareThreads 3
 ThreadsPerChild 5
 
-WSGIDaemonProcess Tools processes=2 threads=12 python-home=/home/tmcadam/Tools/dfb/.env python-path=/home/tmcadam/Tools/dfb
-WSGIProcessGroup Tools
+WSGIDaemonProcess {{ app_name }} processes=2 threads=12 python-home={{ python_home }} python-path={{ python_path }}
+WSGIProcessGroup {{ app_name }}
 WSGILazyInitialization On
 
-WSGIScriptAlias / /home/tmcadam/Tools/dfb/dfb/wsgi.py
+WSGIScriptAlias / {{ wsgi_script }}

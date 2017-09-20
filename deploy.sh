@@ -24,6 +24,9 @@ pip-sync requirements.txt
 # Check for and apply new migrations
 python manage.py migrate --database default --no-input
 
+# Build httpd.conf from template
+python httpd.conf.py
+
 # Update httpd.conf and restart Apache
 mv ../apache2/conf/httpd.conf ../apache2/conf/httpd.conf.previous
 cp httpd.conf ../apache2/conf/httpd.conf
